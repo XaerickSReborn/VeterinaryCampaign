@@ -30,7 +30,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
     if (builder.Environment.IsDevelopment())
         options.UseMySQL(connectionString)
             .LogTo(Console.WriteLine, LogLevel.Information)
-            .EnableSensitiveDataLogging()
+            .EnableSensitiveDataLogging(false)
             .EnableDetailedErrors();
     else if (builder.Environment.IsProduction())
         options.UseMySQL(connectionString)
