@@ -2,6 +2,12 @@ using VeterinaryCampaign.Shared.Domain.Repositories;
 using VeterinaryCampaign.Shared.Infrastructure.Interfaces.ASP.Configuration;
 using VeterinaryCampaign.Shared.Infrastructure.Persistence.EFC.Configuration;
 using VeterinaryCampaign.Shared.Infrastructure.Persistence.EFC.Repositories;
+
+using VeterinaryCampaign.CRM.Application.Internal.CommandServices;
+using VeterinaryCampaign.CRM.Domain.Repositories;
+using VeterinaryCampaign.CRM.Domain.Services;
+using VeterinaryCampaign.CRM.Infrastructure.Persistence.EFC.Repositories;
+
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 
@@ -67,6 +73,9 @@ builder.Services.AddSwaggerGen(options =>
 // Shared Bounded Context
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
+// CRM Bounded Context
+builder.Services.AddScoped<IManagerRepository, ManagerRepository>();
+builder.Services.AddScoped<IManagerCommandService, ManagerCommandServiceImpl>();
 
 
 var app = builder.Build();
